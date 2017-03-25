@@ -72,9 +72,4 @@ class Messages(models.Model):
     content=models.CharField(max_length=100)
     time=models.DateTimeField()
 
-class Administrator(models.Model):
-    userid=models.CharField(max_length=30)
-    email=models.CharField(max_length=60)
-    password=models.CharField(max_length=15)
-    phone_number=models.IntegerField()
     
