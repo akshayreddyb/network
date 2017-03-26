@@ -25,8 +25,8 @@ class Softwaresinstalled(models.Model):
 
 class Peripherals(models.Model):
     PERIPHERAL_CHOICES=(
-        (1,"Keyboard")
-        (2,"Mouse")
+        (1,"Keyboard"),
+        (2,"Mouse"),
         (3,"Speaker")
     )
     machine = models.ForeignKey(Machine, null=False, blank=False, related_name="peripherals")
@@ -49,27 +49,25 @@ class Session(models.Model):
 
 class Logs(models.Model):
     TYPE_CHOICES=(
-            (1,"General message and system related logs")
-            (2,"Authentication Logs")
-            (3,"Login Records")
-            (4,"MySQL database server log file")
-            (5,"Kernal Logs")
-            (6,"System boot Log")
-            (7,"dpkg")
+            (1,"General message and system related logs"),
+            (2,"Authentication Logs"),
+            (3,"Login Records"),
+            (4,"MySQL database server log file"),
+            (5,"Kernal Logs"),
+            (6,"System boot Log"),
+            (7,"dpkg"),
             (8,"Mail Server Logs")
 
     )
-    session=models.ForeignKey(Session,related_name="")#fill
+    session=models.ForeignKey(Session,related_name="log_session")#fill
     username=models.ForeignKey(MachineUser,related_name="userlogs")
     machine=models.ForeignKey(Machine,related_name="machinelogs")
     content=models.CharField(max_length=500)
     type=models.IntegerField(choices=TYPE_CHOICES)
 
 class Messages(models.Model):
-    session=models.ForeignKey(Session,related_name="")#fill
+    session=models.ForeignKey(Session,related_name="message_session")#fill
     username=models.ForeignKey(MachineUser,related_name="user_messages")
     machine=models.ForeignKey(Machine,related_name="machine_messages")
     content=models.CharField(max_length=100)
     time=models.DateTimeField()
-
-    
